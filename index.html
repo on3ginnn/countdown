@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Осталось до 01.04.2024:</h2>
+        <p id="countdown"></p>
+
+        <script>
+            function func() {
+                var currentDate = new Date();
+                var endDate = new Date('04/01/2024');
+
+                // Разница в миллисекундах между текущей датой и датой окончания отсчета
+                var difference = endDate - currentDate;
+
+                // Рассчитываем необходимые значения (секунды, минуты, часы, дни, месяцы)
+                var seconds = Math.floor((difference / 1000) % 60);
+                var minutes = Math.floor((difference / 1000 / 60) % 60);
+                var hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+                var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                var months = Math.floor(days / 30);
+                days -= months * 30;
+
+                // Формируем строку с отсчетом
+                var countdown = '';
+                
+                if (months > 0) {
+                    countdown += months + ' месяцев, ';
+                }
+
+                if (days > 0) {
+                    countdown += days + ' дней, ';
+                }
+
+                if (hours > 0) {
+                    countdown += hours + ' часов, ';
+                }
+
+                if (minutes > 0) {
+                    countdown += minutes + ' минут, ';
+                }
+
+                if (seconds > 0) {
+                    countdown += seconds + ' секунд';
+                }
+
+                // Выводим отсчет на страницу
+                document.getElementById('countdown').innerHTML = 'Осталось: ' + countdown;
+            }
+            setInterval(func, 1000)
+        </script>
+    </body>
+</html>
